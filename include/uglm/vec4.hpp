@@ -45,62 +45,15 @@ namespace u
 			return vec4(-x, -y, -z, -w);
 		}
 
-		/* Basic Math Operations with Scalars */
 
-		vec4 operator*(const GLfloat &S) const
-		{
-			return vec4(x * S, y * S, z * S, w * S);
-		}
-		vec4 operator/(const GLfloat &S) const
-		{
-			return vec4(x / S, y / S, z / S, w / S);
-		}
-		vec4 operator+(const GLfloat &S) const
-		{
-			return vec4(x + S, y + S, z + S, w + S);
-		}
-		vec4 operator-(const GLfloat &S) const
-		{
-			return vec4(x - S, y - S, z - S, w - w);
-		}
-
-		/* Basic Math Operations with Vectors */
-
-		vec4 operator*(const vec4 &vec) const
-		{
-			return vec4(x * vec.x, y * vec.y, z * vec.z, w * vec.w);
-		}
-		vec4 operator/(const vec4 &vec) const
-		{
-			return vec4(x / vec.x, y / vec.y, z / vec.z, w / vec.w);
-		}
-		vec4 operator+(const vec4 &vec) const
-		{
-			return vec4(x + vec.x, y + vec.y, z + vec.z, w + vec.w);
-		}
-		vec4 operator-(const vec4 &vec) const
-		{
-			return vec4(x - vec.x, y - vec.y, z - vec.z, w - vec.w);
-		}
-
-		/* Basic Math Operators with modifying the Object */
-
-		vec4 &operator*=(const vec4 &vec)
-		{
-			return *this = vec4(x * vec.x, y * vec.y, z * vec.z, w * vec.w);
-		}
-		vec4 &operator/=(const vec4 &vec)
-		{
-			return *this = vec4(x / vec.x, y / vec.y, z / vec.z, w / vec.w);
-		}
-		vec4 &operator+=(const vec4 &vec)
-		{
-			return *this = vec4(x + vec.x, y + vec.y, z + vec.z, w + vec.w);
-		}
-		vec4 &operator-=(const vec4 &vec)
-		{
-			return *this = vec4(x - vec.x, y - vec.y, z - vec.z, w - vec.w);
-		}
+		/**********************Addition**********************/
+		GENERATE_OPRETORS_VEC4(+, +=);
+		/**********************Subtraction*******************/
+		GENERATE_OPRETORS_VEC4(-, -=);
+		/**********************Multiplication****************/
+		GENERATE_OPRETORS_VEC4(*, *=);
+		/**********************Division**********************/
+		GENERATE_OPRETORS_VEC4(/ , /=);
 
 		/* Incrementing and Decrementing Operators */
 
@@ -141,15 +94,16 @@ namespace u
 		{
 			return GLfloat(u::sqrt(pow2(x) + pow2(y) + pow2(z) + pow2(w)));
 		}
-		void cout() const
-		{
-			std::cout << "(" << x << ", " << y << ", " << z << ", " << w << ")";
-		}
 	};
+	inline std::ostream &operator <<(std::ostream& os, const u::vec4 &vec)
+	{
+		os << '(' << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ')';
+		return os;
+	}
 	/* Basic Math Operations with Scalars */
 
-	inline vec4 operator*(const GLfloat &S, vec4 &vec)
+	inline vec4 operator*(const GLfloat& value, vec4 &vec)
 	{
-		return vec4(vec.x * S, vec.y * S, vec.z * S, vec.w * S);
+		return vec4(vec.x * value, vec.y * value, vec.z * value, vec.w * value);
 	}
 }

@@ -39,24 +39,24 @@ namespace u
 	{
 		// Scalar Matrix Transformation.
 		const auto &s = scalar;
-		mat4 S(
+		mat4 value(
 			s.x, 0.f, 0.f, 0.f,
 			0.f, s.y, 0.f, 0.f,
 			0.f, 0.f, 0.f, 0.f,
 			0.f, 0.f, 0.f, 1.f);
-		return M * S; // Multiply the S with the provided M
+		return M * value; // Multiply the value with the provided M
 	}
 	// Scales a Matrix to a given size on specific axes using a vector.
 	inline mat4 scale(mat4 M, vec3 scalar)
 	{
 		// Scalar Matrix Transformation.
 		const auto &s = scalar;
-		mat4 S(
+		mat4 value(
 			s.x, 0.f, 0.f, 0.f,
 			0.f, s.y, 0.f, 0.f,
 			0.f, 0.f, s.z, 0.f,
 			0.f, 0.f, 0.f, 1.f);
-		return M * S; // Multiply the S with the provided M
+		return M * value; // Multiply the value with the provided M
 	}
 	// Rotates a Matrixatrix around given axes using a vector with some angle theta.
 	template<typename Angle, typename Rotation_Vector_Axes>

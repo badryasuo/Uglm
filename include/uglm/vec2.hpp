@@ -30,83 +30,25 @@ namespace u
 			x = a;
 			y = b;
 		}
-
-		/* Positivating / Negating */
-
+		//----Positivating-----/
 		vec2 operator+() const
 		{
 			return vec2(+x, +y);
 		}
+		//----Negating---------/
 		vec2 operator-() const
 		{
 			return vec2(-x, -y);
 		}
+		/**********************Addition**********************/
+		GENERATE_OPRETORS_VEC2(+, +=);
+		/**********************Subtraction*******************/
+		GENERATE_OPRETORS_VEC2(-, -=);
+		/**********************Multiplication****************/
+		GENERATE_OPRETORS_VEC2(*, *=);
+		/**********************Division**********************/
+		GENERATE_OPRETORS_VEC2(/, /=);
 
-		/* Basic Math Operations with Scalars */
-
-		vec2 operator+(const GLfloat &S) const
-		{
-			return vec2(x + S, y + S);
-		}
-		vec2 operator-(const GLfloat &S) const
-		{
-			return vec2(x - S, y - S);
-		}
-		vec2 operator*(const GLfloat &S) const
-		{
-			return vec2(x * S, y * S);
-		}
-		vec2 operator/(const GLfloat &S) const
-		{
-			return vec2(x / S, y / S);
-		}
-
-		/* Basic Math Operations with Vectors */
-
-		vec2 operator*(const vec2 &vec) const
-		{
-			return vec2(x * vec.x, y * vec.y);
-		}
-		vec2 operator/(const vec2 &vec) const
-		{
-			return vec2(x / vec.x, y / vec.y);
-		}
-		vec2 operator+(const vec2 &vec) const
-		{
-			return vec2(x + vec.x, y + vec.y);
-		}
-		vec2 operator-(const vec2 &vec) const
-		{
-			return vec2(x - vec.x, y - vec.y);
-		}
-
-		/* Basic Math Operators with modifying the Object */
-
-		vec2 &operator*=(const vec2 &vec)
-		{
-			return *this = vec2(x * vec.x, y * vec.y);
-		}
-		vec2 &operator/=(const vec2 &vec)
-		{
-			return *this = vec2(x / vec.x, y / vec.y);
-		}
-		vec2 &operator+=(const vec2 &vec)
-		{
-			return *this = vec2(x + vec.x, y + vec.y);
-		}
-		vec2 &operator-=(const vec2 &vec)
-		{
-			return *this = vec2(x - vec.x, y - vec.y);
-		}
-		vec2 &operator+=(const float &val)
-		{
-			return *this = vec2(x + val, y + val);
-		}
-		vec2 &operator-=(const float &val)
-		{
-			return *this = vec2(x - val, y - val);
-		}
-		
 		/* Incrementing and Decrementing Operators */
 
 		vec2 operator++(int)
@@ -150,17 +92,25 @@ namespace u
 		{
 			return GLfloat(u::sqrt(pow2(x) + pow2(y)));
 		}
-		void cout() const
-		{
-			std::cout << "(" << x << ", " << y << ")";
-		}
 
 	};
 	/* Basic Math Operations with Scalars */
 
-	inline vec2 operator*(const GLfloat &S, vec2 &vec)
+	inline vec2 operator+(const GLfloat& value, vec2 &vec)
 	{
-		return vec2(vec.x * S, vec.y * S);
+		return vec2(vec.x + value, vec.y + value);
+	}
+	inline vec2 operator-(const GLfloat& value, vec2 &vec)
+	{
+		return vec2(vec.x - value, vec.y - value);
+	}
+	inline vec2 operator*(const GLfloat& value, vec2 &vec)
+	{
+		return vec2(vec.x * value, vec.y * value);
+	}
+	inline vec2 operator/(const GLfloat& value, vec2 &vec)
+	{
+		return vec2(vec.x / value, vec.y / value);
 	}
 
 	struct ivec2 : public vec2
@@ -190,9 +140,15 @@ namespace u
 			return (int&)(d[i > 1 ? -1 : i]);
 		}
 	};
-	/* Basic Math Operations with Scalars */
-	inline ivec2 operator*(const GLfloat &S, ivec2 &vec)
+	inline std::ostream &operator <<(std::ostream& os, const u::vec2 &vec)
 	{
-		return ivec2(static_cast<int>(vec.x * S), static_cast<int>(vec.y * S));
+		os << '(' << vec.x << ", " << vec.y << ')';
+		return os;
+	}
+	/* Basic Math Operations with Scalars */
+
+	inline ivec2 operator*(const GLfloat& value, ivec2 &vec)
+	{
+		return ivec2(static_cast<int>(vec.x * value), static_cast<int>(vec.y * value));
 	}
 }

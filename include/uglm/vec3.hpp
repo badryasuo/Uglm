@@ -40,73 +40,25 @@ namespace u
 			y = b;
 			z = c;
 		}
-		/* Positivating / Negating */
-
+		//----Positivating-----/
 		vec3 operator+() const
 		{
 			return vec3(+x, +y, +z);
 		}
+		//----Negating---------/
 		vec3 operator-() const
 		{
 			return vec3(-x, -y, -z);
 		}
 
-		/* Basic Math Operations with Scalars */
-
-		vec3 operator*(const GLfloat &S) const
-		{
-			return vec3(x * S, y * S, z * S);
-		}
-		vec3 operator/(const GLfloat &S) const
-		{
-			return vec3(x / S, y / S, z / S);
-		}
-		vec3 operator+(const GLfloat &S) const
-		{
-			return vec3(x + S, y + S, z + S);
-		}
-		vec3 operator-(const GLfloat &S) const
-		{
-			return vec3(x - S, y - S, z - S);
-		}
-
-		/* Basic Math Operations with Vectors */
-
-		vec3 operator*(const vec3 &vec) const
-		{
-			return vec3(x * vec.x, y * vec.y, z * vec.z);
-		}
-		vec3 operator/(const vec3 &vec) const
-		{
-			return vec3(x / vec.x, y / vec.y, z / vec.z);
-		}
-		vec3 operator+(const vec3 &vec) const
-		{
-			return vec3(x + vec.x, y + vec.y, z + vec.z);
-		}
-		vec3 operator-(const vec3 &vec) const
-		{
-			return vec3(x - vec.x, y - vec.y, z - vec.z);
-		}
-
-		/* Basic Math Operators with modifying the Object */
-
-		vec3 &operator*=(const vec3 &vec)
-		{
-			return *this = vec3(x * vec.x, y * vec.y, z * vec.z);
-		}
-		vec3 &operator/=(const vec3 &vec)
-		{
-			return *this = vec3(x / vec.x, y / vec.y, z / vec.z);
-		}
-		vec3 &operator+=(const vec3 &vec)
-		{
-			return *this = vec3(x + vec.x, y + vec.y, z + vec.z);
-		}
-		vec3 &operator-=(const vec3 &vec)
-		{
-			return *this = vec3(x - vec.x, y - vec.y, z - vec.z);
-		}
+		/**********************Addition**********************/
+		GENERATE_OPRETORS_VEC3(+, +=);
+		/**********************Subtraction*******************/
+		GENERATE_OPRETORS_VEC3(-, -=);
+		/**********************Multiplication****************/
+		GENERATE_OPRETORS_VEC3(*, *=);
+		/**********************Division**********************/
+		GENERATE_OPRETORS_VEC3(/ , /=);
 		
 		/* Incrementing and Decrementing Operators */
 
@@ -144,19 +96,15 @@ namespace u
 		{
 			return GLfloat(u::sqrt(pow2(x) + pow2(y) + pow2(z)));
 		}
-		void cout() const
-		{
-			std::cout << "(" << x << ", " << y << ", " << z << ")";
-		}
 	};
-	/* Basic Math Operations with Scalars */
 	inline std::ostream &operator <<(std::ostream& os, const u::vec3 &vec)
 	{
 		os << '(' << vec.x << ", " << vec.y << ", " << vec.z << ')';
 		return os;
 	}
-	inline vec3 operator*(const GLfloat &S, vec3 vec)
+	/* Basic Math Operations with Scalars */
+	inline vec3 operator*(const GLfloat& value, vec3 vec)
 	{
-		return vec3(vec.x * S, vec.y * S, vec.z * S);
+		return vec3(vec.x * value, vec.y * value, vec.z * value);
 	}
 }
