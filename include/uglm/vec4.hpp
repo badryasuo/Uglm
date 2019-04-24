@@ -2,9 +2,8 @@
 #ifndef DARK_GLSL
 #define DARK_GLSL
 #endif
-#include "consts.h"
+#include "basic.hpp"
 #include "vec3.hpp"
-#include <math.h>
 #include <ostream>
 /*----------1x4 vector */
 namespace u
@@ -140,11 +139,11 @@ namespace u
 		// Retrives the length of a vector.
 		GLfloat length()
 		{
-			return sqrtf(pow2(x) + pow2(y) + pow2(z) + pow2(w));
+			return GLfloat(u::sqrt(pow2(x) + pow2(y) + pow2(z) + pow2(w)));
 		}
-		void cout()
+		void cout() const
 		{
-			printf("(%f, %f, %f, %f)", this->x, this->y, this->z, this->w);
+			std::cout << "(" << x << ", " << y << ", " << z << ", " << w << ")";
 		}
 	};
 	/* Basic Math Operations with Scalars */

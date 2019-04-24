@@ -1,5 +1,5 @@
 #pragma once
-#include "consts.h"
+#include "defines.h"
 #include "vec2.hpp"
 #include "vec3.hpp"
 #include "vec4.hpp"
@@ -169,7 +169,7 @@ namespace u
 		{
 			for (int c = 0; c < 3; ++c)
 				os << (c == 0 ? (M.d[c][r] < 0 ? "" : " ") : M.d[c][r] < 0 ? "\t" : "\t ") << std::setprecision(7) << (abs(M.d[c][r]) < 0.0000005f ? 0 : M.d[c][r]);
-			putchar('\n');
+			std::cout << std::endl;
 		}
 		return os;
 	}

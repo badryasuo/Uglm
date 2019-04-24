@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 namespace u
 {
 	template<typename vec_type, unsigned int A, unsigned int B>

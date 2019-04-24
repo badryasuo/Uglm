@@ -1,7 +1,6 @@
 #pragma once
-#include "consts.h"
+#include "basic.hpp"
 #include "swizzle.hpp"
-#include <math.h>
 #include <ostream>
 /*----------1x2 vector */
 namespace u
@@ -149,11 +148,11 @@ namespace u
 		// Retrives the length of a vector.
 		GLfloat length() const
 		{
-			return sqrtf(pow2(x) + pow2(y));
+			return GLfloat(u::sqrt(pow2(x) + pow2(y)));
 		}
 		void cout() const
 		{
-			printf("(%f, %f)", this->x, this->y);
+			std::cout << "(" << x << ", " << y << ")";
 		}
 
 	};

@@ -1,5 +1,5 @@
 #pragma once
-#include "consts.h"
+#include "defines.h"
 #include "mat4.hpp"
 /*--Transformatios--*/
 namespace u
