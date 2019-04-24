@@ -1,4 +1,3 @@
-# uglm
-Ultra Optimized OpenGL Mathematics Library
-
-A header-only OpenGL library that's optimzed for math operations.
+# Ultra OpenGL Mathematics Library (Uglm)
+The fastest and the most functional OpenGL Math Library.<br>
+Just set the include directory to `include` and have fun.
