@@ -90,7 +90,7 @@ namespace u
 		// Retrives the length of a vector.
 		GLfloat length() const
 		{
-			return GLfloat(u::sqrt(pow2(x) + pow2(y)));
+			return GLfloat(glmSqrt(pow2(x) + pow2(y)));
 		}
 
 	};

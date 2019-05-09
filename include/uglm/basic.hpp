@@ -23,6 +23,7 @@ namespace u
 			return 1 / result;
 		return result;
 	}
+#ifdef UGLM_USE_INLINE_ASSEMBLY
 	// returns the Square Root of X
 	inline const long double declspec_naked fastcall sqrt(const long double X)
 	{
@@ -36,6 +37,10 @@ namespace u
 	{
 		return static_cast<T>(sqrt(static_cast<long double>(X)));
 	}
+#define glmSqrt u::sqrt
+#else
+#define glmSqrt std::sqrt
+#endif
 	inline double floor(double n)
 	{
 		return n - fmod(n, 1);

@@ -92,7 +92,7 @@ namespace u
 		// Retrives the length of a vector.
 		GLfloat length()
 		{
-			return GLfloat(u::sqrt(pow2(x) + pow2(y) + pow2(z) + pow2(w)));
+			return GLfloat(glmSqrt(pow2(x) + pow2(y) + pow2(z) + pow2(w)));
 		}
 	};
 	inline std::ostream &operator <<(std::ostream& os, const u::vec4 &vec)
